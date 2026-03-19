@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface Product {
   titulo: string;
@@ -11,44 +12,18 @@ interface Product {
 }
 
 export default function ProductCard({ product }: { product: Product }) {
-  const [preferenceId, setPreferenceId] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  useEffect(() => {
-    const createPreference = async () => {
-      try {
-        const response = await fetch('/api/create-preference', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            title: product.titulo,
-            price: product.precio,
-            quantity: 1,
-            description: product.descripcion,
-          }),
-        });
-
-        const data = await response.json();
-        console.log('Preference response:', data);
-        
-        if (!response.ok) {
-          console.error('API Error:', data);
-          throw new Error(data.error || 'Error creating preference');
-        }
-        
-        setPreferenceId(data.id);
-      } catch (error) {
-        console.error('Error creating preference:', error);
-        console.log('Error details:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    createPreference();
-  }, [product]);
+  const handleBuy = () => {
+    setLoading(true);
+    const params = new URLSearchParams({
+      titulo: product.titulo,
+      precio: String(product.precio),
+      descripcion: product.descripcion,
+    });
+    router.push(`/checkout?${params.toString()}`);
+  };
 
   return (
     <div className="border rounded-lg p-4 shadow-md">
@@ -57,31 +32,21 @@ export default function ProductCard({ product }: { product: Product }) {
       )}
       <h3 className="font-bold mt-2">{product.titulo}</h3>
       {product.categoria && (
-        <span className="text-sm text-gray-500">
-          {product.categoria}
-        </span>
+        <span className="text-sm text-gray-500">{product.categoria}</span>
       )}
       <p className="text-gray-600 text-sm mt-1">{product.descripcion}</p>
-
       <div className="mt-4">
         <p className="text-lg font-bold">
           ${product.precio.toLocaleString('es-AR')}
         </p>
       </div>
-
-      {loading ? (
-        <button disabled className="w-full bg-gray-300 text-white py-2 rounded mt-4">
-          Cargando...
-        </button>
-      ) : preferenceId ? (
-        <a href={`https://mercadopago.com/checkout/v1/redirect?pref_id=${preferenceId}`} className="w-full bg-blue-600 text-white py-2 rounded mt-4 block text-center">
-          Comprar Ahora
-        </a>
-      ) : (
-        <button disabled className="w-full bg-red-400 text-white py-2 rounded mt-4">
-          Error al cargar
-        </button>
-      )}
+      <button
+        onClick={handleBuy}
+        disabled={loading}
+        className="w-full bg-blue-600 text-white py-2 rounded mt-4 disabled:bg-gray-300"
+      >
+        {loading ? 'Cargando...' : 'Comprar Ahora'}
+      </button>
     </div>
   );
 }
