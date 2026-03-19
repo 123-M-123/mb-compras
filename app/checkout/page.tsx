@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 declare global {
   interface Window {
@@ -9,7 +10,7 @@ declare global {
   }
 }
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const brickContainer = useRef<HTMLDivElement>(null);
   const brickRendered = useRef(false);
@@ -26,7 +27,6 @@ export default function CheckoutPage() {
 
     const initBrick = async () => {
       try {
-        // 1. Crear preferencia
         const res = await fetch('/api/create-preference', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -43,7 +43,6 @@ export default function CheckoutPage() {
 
         const preferenceId = data.id;
 
-        // 2. Cargar SDK de Mercado Pago
         const script = document.createElement('script');
         script.src = 'https://sdk.mercadopago.com/js/v2';
         script.async = true;
@@ -63,13 +62,12 @@ export default function CheckoutPage() {
               preferenceId: preferenceId,
             },
             customization: {
-  paymentMethods: {
-    creditCard: 'all',
-    debitCard: 'all',
-    mercadoPago: 'all',      // ← saldo cuenta MP + cuotas sin tarjeta
-    ticket: 'all',           // ← pagos en efectivo (Rapipago, Pago Fácil)
-  },
-},
+              paymentMethods: {
+                creditCard: 'all',
+                debitCard: 'all',
+                mercadoPago: 'all',
+              },
+            },
             callbacks: {
               onReady: () => setLoading(false),
               onSubmit: async ({ formData }: any) => {
@@ -82,7 +80,7 @@ export default function CheckoutPage() {
 
                 if (payment.status === 'approved') {
                   window.location.href = '/success';
-                } else if (payment.status === 'pending'|| payment.status === 'in_process') {
+                } else if (payment.status === 'pending' || payment.status === 'in_process') {
                   window.location.href = '/pending';
                 } else {
                   window.location.href = '/failure';
@@ -109,13 +107,19 @@ export default function CheckoutPage() {
       <h1 className="text-2xl font-bold mb-2">Finalizar compra</h1>
       <p className="text-gray-600 mb-1">{titulo}</p>
       <p className="text-xl font-bold mb-6">
-  $ {precio.toLocaleString('es-AR')}
-</p>
-
+        $ {precio.toLocaleString('es-AR')}
+      </p>
       {loading && <p className="text-gray-500">Cargando formulario de pago...</p>}
       {error && <p className="text-red-500">{error}</p>}
-
       <div id="payment-brick-container" ref={brickContainer} />
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div className="max-w-xl mx-auto p-6">Cargando...</div>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }
