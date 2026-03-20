@@ -70,22 +70,27 @@ function CheckoutContent() {
             },
             callbacks: {
               onReady: () => setLoading(false),
-              onSubmit: async ({ formData }: any) => {
-                const result = await fetch('/api/process-payment', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(formData),
-                });
-                const payment = await result.json();
+              onSubmit: async ({ formData, selectedPaymentMethod }: any) => {
+  // Si es pago con cuenta MP, la redirección la maneja MP solo
+  if (selectedPaymentMethod?.type === 'wallet_purchase') {
+    return;
+  }
 
-                if (payment.status === 'approved') {
-                  window.location.href = '/success';
-                } else if (payment.status === 'pending' || payment.status === 'in_process') {
-                  window.location.href = '/pending';
-                } else {
-                  window.location.href = '/failure';
-                }
-              },
+  const result = await fetch('/api/process-payment', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  });
+  const payment = await result.json();
+
+  if (payment.status === 'approved') {
+    window.location.href = '/success';
+  } else if (payment.status === 'pending' || payment.status === 'in_process') {
+    window.location.href = '/pending';
+  } else {
+    window.location.href = '/failure';
+  }
+},
               onError: (error: any) => {
                 console.error('Brick error:', error);
                 setError('Ocurrió un error con el formulario de pago.');
