@@ -2,27 +2,52 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN || '';
 
+type ItemCarrito = {
+  id: string;
+  title: string;
+  quantity: number;
+  unit_price: number;
+  currency_id?: string;
+  description?: string;
+};
+
 export async function POST(request: NextRequest) {
   try {
-    const { title, price, quantity, description } = await request.json();
-
+    const body = await request.json();
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
+    // Soporta tanto carrito nuevo (items array) como llamada vieja (producto único)
+    let items: ItemCarrito[];
+
+    if (body.items && Array.isArray(body.items)) {
+      // Carrito nuevo → array de productos
+      items = body.items.map((i: ItemCarrito) => ({
+        id:          i.id,
+        title:       i.title,
+        quantity:    i.quantity,
+        unit_price:  i.unit_price,
+        currency_id: 'ARS',
+      }));
+    } else {
+      // Formato viejo → producto único (compatibilidad)
+      items = [{
+        id:          '1',
+        title:       body.title,
+        quantity:    body.quantity,
+        unit_price:  body.price,
+        currency_id: 'ARS',
+        description: body.description,
+      }];
+    }
+
     const preference = {
-      items: [
-        {
-          title,
-          quantity,
-          unit_price: price,
-          currency_id: 'ARS',
-          description,
-        },
-      ],
+      items,
       back_urls: {
         success: `${baseUrl}/success`,
         failure: `${baseUrl}/failure`,
         pending: `${baseUrl}/pending`,
       },
+      auto_return: 'approved',
       notification_url: `${baseUrl}/api/webhook`,
     };
 
