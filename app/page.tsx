@@ -163,57 +163,70 @@ export default function Home() {
       {/* HEADER */}
       <header style={{
         backgroundColor: C.oliveDark,
-        boxShadow: '0 2px 12px rgba(0,0,0,0.25)',
+        boxShadow: '0 6px 18px rgba(0,0,0,0.31)',
         position: 'sticky', top: 0, zIndex: 50,
       }}>
-        <div style={{
+        <div
+          className="header-inner"
+          style={{
           maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem',
-          height: 64, display: 'flex', alignItems: 'center',
+          height: 55, display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', position: 'relative',
         }}>
 
           {/* REDES — izquierda */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div className="social-links" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <a
               href="https://www.instagram.com/me_ra_k_i?igsh=Z2Yydnk1cmVraW1s"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: C.tanLight, display: 'flex', alignItems: 'center' }}
+              className="social-link"
+              style={{ color: C.tanLight, display: 'flex', alignItems: 'center', gap: '0.45rem' }}
             >
-              <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="social-svg-instagram" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <circle cx="12" cy="12" r="4"/>
                 <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
               </svg>
+              <span className="social-label">Seguime</span>
             </a>
             <a
               href="https://wa.me/5491168075600"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: C.tanLight, display: 'flex', alignItems: 'center' }}
+              className="social-link"
+              style={{ color: C.tanLight, display: 'flex', alignItems: 'center', gap: '0.45rem' }}
             >
-              <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="social-svg-whatsapp" width="35" height="35" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                 <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L.057 23.428a.75.75 0 0 0 .915.915l5.571-1.476A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.953-1.354l-.355-.211-3.667.971.988-3.607-.231-.371A9.725 9.725 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
               </svg>
+              <span className="social-label">Escríbime</span>
             </a>
           </div>
 
           {/* LOGO — centro absoluto */}
           <div style={{
-            position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
+            position: 'absolute', top: 15, left: '50%', transform: 'translateX(-50%)',
           }}>
             <Image
               src="/uploads/imagenes/logo.png"
               alt="Meraki Bijú"
-              width={240}
-              height={96}
-              style={{ objectFit: 'contain', display: 'block' }}
+              className="meraki-logo-img"
+              width={312}
+              height={124}
+              style={{
+                objectFit: 'contain',
+                display: 'block',
+                filter: 'drop-shadow(0 0 6px rgba(255, 250, 170, 0.55)) drop-shadow(0 0 14px rgba(255, 220, 90, 0.35))',
+                animation: 'heroLogoBreath 13.3s ease-in-out infinite alternate',
+              }}
             />
           </div>
 
           {/* CARRITO — derecha */}
           <button
+            className="cart-btn"
             onClick={() => setCarritoOpen(true)}
             style={{
               position: 'relative', background: 'transparent',
@@ -234,7 +247,7 @@ export default function Home() {
             )}
             <span>Carrito</span>
             {cantidadCarrito > 0 && (
-              <span style={{ color: C.purpleLight, fontSize: '0.75rem' }}>{formatARS(totalCarrito)}</span>
+              <span className="cart-total" style={{ color: C.purpleLight, fontSize: '0.75rem' }}>{formatARS(totalCarrito)}</span>
             )}
           </button>
 
@@ -244,25 +257,124 @@ export default function Home() {
       {/* HERO */}
       <section style={{
         background: `linear-gradient(135deg, ${C.oliveDark} 0%, ${C.tan} 100%)`,
-        padding: '3rem 1.5rem', textAlign: 'center',
+        padding: '4rem 1.5rem', textAlign: 'center',
+        minHeight: '430px',
+        position: 'relative', overflow: 'hidden',
       }}>
-        <p style={{ color: C.goldLight, fontSize: '1.5rem', letterSpacing: '0.25em', textTransform: 'uppercase', margin: '0 0 0.5rem' }}>
-          Producto 100% artesanal
-        </p>
-        <p style={{ color: C.goldLight, fontSize: '0.90rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 0.5rem' }}>
-          cada diseño está tejido a mano con hilos de calidad.
-        </p>
-        <p style={{ color: C.goldLight, fontSize: '0.70rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 1rem' }}>
-          pensado para que una pieza original, única y especial.
-        </p>
-        <h2 style={{ color: C.white, fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', fontWeight: 800, margin: '0 0 0.75rem' }}>
-          Bijutería con Alma
-        </h2>
-        <p style={{ color: C.tanLight, fontSize: '1rem', maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
-          ¨Meraki¨ es una palabra griega que significa hacer algo con pasión, amor, creatividad y alma,
-          dejando una huella personal y positiva en todo lo que se hace. Esto es lo que quiero trasmitir
-          con mis creaciones. La creatividad es parte de mi esencia y la artesanía es parte de mi vida.
-        </p>
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          pointerEvents: 'none',
+        }}>
+          <img
+            src="/hero-lotus.png"
+            alt=""
+            aria-hidden="true"
+            className="hero-lotus-bg"
+            style={{
+              width: 'min(980px, 125vw)',
+              maxHeight: '140%',
+              objectFit: 'contain',
+              opacity: 0.32,
+              filter: 'blur(1.5px)',
+              animation: 'heroLotusFloat 13.3s ease-in-out infinite alternate',
+            }}
+          />
+        </div>
+
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <p suppressHydrationWarning style={{ color: C.goldLight, fontSize: '0.90rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 0.5rem', textShadow: '0 4px 14px rgba(0,0,0,0.31)' }}>
+            cada diseño está tejido a mano con hilos de calidad.
+          </p>
+          <p suppressHydrationWarning style={{ color: C.goldLight, fontSize: '0.70rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 1rem', textShadow: '0 4px 14px rgba(0,0,0,0.31)' }}>
+            pensado para que una pieza original, única y especial.
+          </p>
+          <h2 style={{ color: C.white, fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', fontWeight: 800, margin: '0 0 0.75rem' }}>
+            Producto 100% Artesanal
+          </h2>
+          <p style={{ color: C.tanLight, fontSize: '1rem', maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
+            ¨Meraki¨ es una palabra griega que significa hacer algo con pasión, amor, creatividad y alma,
+            dejando una huella personal y positiva en todo lo que se hace. Esto es lo que quiero trasmitir
+            con mis creaciones. La creatividad es parte de mi esencia y la artesanía es parte de mi vida.
+          </p>
+        </div>
+        <style>{`
+          @keyframes heroLotusFloat {
+            0% { transform: scale(0.74) translateY(0px); }
+            100% { transform: scale(1.11) translateY(-10px); }
+          }
+          @keyframes heroLogoBreath {
+            0% {
+              transform: scale(0.88);
+              filter:
+                drop-shadow(0 0 10px rgba(255, 250, 170, 0.78))
+                drop-shadow(0 0 24px rgba(255, 220, 90, 0.52));
+            }
+            100% {
+              transform: scale(0.98);
+              filter:
+                drop-shadow(0 0 14px rgba(255, 255, 210, 0.92))
+                drop-shadow(0 0 32px rgba(255, 230, 120, 0.60));
+            }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .hero-lotus-bg { animation: none !important; }
+            .meraki-logo-img { animation: none !important; }
+          }
+
+          /* En desktop los textos no se muestran; en móvil sí */
+          .social-label { display: none; }
+
+          @media (max-width: 640px) {
+            .header-inner {
+              height: 84px !important;
+              align-items: flex-start !important;
+            }
+            .meraki-logo-img {
+              width: 145px !important;
+              height: auto !important;
+              filter:
+                drop-shadow(0 0 7px rgba(255, 250, 170, 0.70))
+                drop-shadow(0 0 16px rgba(255, 220, 90, 0.40)) !important;
+            }
+
+            .social-links {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+              gap: 0.25rem !important;
+              margin-left: -5px !important;
+            }
+            .social-link {
+              gap: 0.22rem !important;
+            }
+            .social-label {
+              display: inline !important;
+              font-size: 0.60rem !important;
+              letter-spacing: 0.02em !important;
+              font-weight: 600 !important;
+              line-height: 1.1 !important;
+              margin-left: -2px !important;
+              white-space: nowrap !important;
+            }
+            .social-svg-instagram {
+              width: 25px !important;
+              height: 25px !important;
+            }
+            .social-svg-whatsapp {
+              width: 23px !important;
+              height: 23px !important;
+            }
+
+            .cart-btn {
+              transform: scale(0.8) !important;
+              transform-origin: right center !important;
+              gap: 0.25rem !important;
+            }
+            .cart-total {
+              display: none !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* MAIN */}
@@ -337,7 +449,7 @@ export default function Home() {
 
         {/* Grilla */}
         {!cargando && !errorMsg && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '1.5rem' }}>
             {productosFiltrados.map(p => (
               <ProductCard
                 key={p.id_producto}
@@ -576,12 +688,12 @@ function ProductCard({ producto, onVerImagen, onAgregar }: ProductCardProps) {
         <p style={{ margin: '0 0 0.6rem', fontSize: '0.72rem', color: C.gray, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
           {producto.descripcion}
         </p>
-        <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: '1.05rem', fontWeight: 800, color: C.olive }}>
-            {formatARS(producto.precio)}
-          </span>
-          <button onClick={onAgregar} style={{
-            padding: '0.4rem 0.9rem',
+        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <span style={{ fontSize: '1rem', fontWeight: 800, color: C.olive }}>
+        {formatARS(producto.precio)}
+        </span>
+        <button onClick={onAgregar} style={{
+           padding: '0.35rem 0.6rem',
             background: hover ? C.purple : C.purplePale,
             border: `1.5px solid ${C.purple}`,
             borderRadius: 8, color: hover ? C.white : C.purple,
