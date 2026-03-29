@@ -7,7 +7,7 @@
     "etiqueta": "Italia",
     "descripcion": "Aro Italia estilo 1",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0011.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "2",
@@ -17,7 +17,7 @@
     "etiqueta": "Italia",
     "descripcion": "Aro Italia estilo 2",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0012.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "3",
@@ -27,7 +27,7 @@
     "etiqueta": "Italia",
     "descripcion": "Aro Italia estilo 3",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0013.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "4",
@@ -37,7 +37,7 @@
     "etiqueta": "Gota",
     "descripcion": "Aro Gota estilo 1",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0014.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "5",
@@ -47,7 +47,7 @@
     "etiqueta": "Gota",
     "descripcion": "Aro Gota estilo 2",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0015.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "6",
@@ -57,7 +57,7 @@
     "etiqueta": "Gota",
     "descripcion": "Aro Gota estilo 3",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0016.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "7",
@@ -67,7 +67,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 1",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0017.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "8",
@@ -77,7 +77,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 2",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0018.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "9",
@@ -87,7 +87,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 3",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0019.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "10",
@@ -97,7 +97,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 4",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0020.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "11",
@@ -107,7 +107,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 5",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0021.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "12",
@@ -117,7 +117,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 6",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0022.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "13",
@@ -127,7 +127,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 7",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0023.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "14",
@@ -137,7 +137,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 8",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0024.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "15",
@@ -147,7 +147,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 9",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0025.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "16",
@@ -157,7 +157,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 10",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0026.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "17",
@@ -167,7 +167,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 11",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0027.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "18",
@@ -177,7 +177,7 @@
     "etiqueta": "Diamante",
     "descripcion": "Aro Diamante estilo 12",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0028.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "19",
@@ -187,7 +187,7 @@
     "etiqueta": "Destello",
     "descripcion": "Aro Destello estilo 1",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0029.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "20",
@@ -197,7 +197,7 @@
     "etiqueta": "Destello",
     "descripcion": "Aro Destello estilo 2",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0030.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "21",
@@ -207,7 +207,7 @@
     "etiqueta": "Destello",
     "descripcion": "Aro Destello estilo 3",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0031.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "22",
@@ -217,7 +217,7 @@
     "etiqueta": "Destello",
     "descripcion": "Aro Destello estilo 4",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0032.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "23",
@@ -227,7 +227,7 @@
     "etiqueta": "Destello",
     "descripcion": "Aro Destello estilo 5",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0033.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "24",
@@ -237,7 +237,7 @@
     "etiqueta": "Cadena",
     "descripcion": "Aro Cadena estilo 1",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0034.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "25",
@@ -247,7 +247,7 @@
     "etiqueta": "Cadena",
     "descripcion": "Aro Cadena estilo 2",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0035.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "26",
@@ -257,7 +257,7 @@
     "etiqueta": "Cadena",
     "descripcion": "Aro Cadena estilo 3",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0036.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "27",
@@ -267,7 +267,7 @@
     "etiqueta": "Serpiente",
     "descripcion": "Aro Serpiente",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0037.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "28",
@@ -277,7 +277,7 @@
     "etiqueta": "Otoño",
     "descripcion": "Aro Otoño",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0038.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "29",
@@ -287,7 +287,7 @@
     "etiqueta": "Corazón",
     "descripcion": "Aro Corazón estilo 1",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0039.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "30",
@@ -297,7 +297,7 @@
     "etiqueta": "Corazón",
     "descripcion": "Aro Corazón estilo 2",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0040.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "31",
@@ -307,7 +307,7 @@
     "etiqueta": "Cereza",
     "descripcion": "Aro Cereza",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0041.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "32",
@@ -317,7 +317,7 @@
     "etiqueta": "Flecha",
     "descripcion": "Aro Flecha",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0042.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "33",
@@ -327,7 +327,7 @@
     "etiqueta": "Perlas",
     "descripcion": "Aro Perlas",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0043.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "34",
@@ -337,7 +337,7 @@
     "etiqueta": "Pluma",
     "descripcion": "Aro Pluma",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0044.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "35",
@@ -347,7 +347,7 @@
     "etiqueta": "Caracol",
     "descripcion": "Aro Caracol",
     "imagen": "/uploads/imagenes/IMG-20260317-WA0045.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "36",
@@ -357,7 +357,7 @@
     "etiqueta": "Nro 1",
     "descripcion": "Chocker Nro 1",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0002.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "37",
@@ -367,7 +367,7 @@
     "etiqueta": "Nro 2",
     "descripcion": "Chocker Nro 2",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0003.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "38",
@@ -377,7 +377,7 @@
     "etiqueta": "Nro 3",
     "descripcion": "Chocker Nro 3",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0004.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "39",
@@ -387,7 +387,7 @@
     "etiqueta": "Nro 4",
     "descripcion": "Chocker Nro 4",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0005.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "40",
@@ -397,7 +397,7 @@
     "etiqueta": "Nro 5",
     "descripcion": "Chocker Nro 5",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0006.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "41",
@@ -407,7 +407,7 @@
     "etiqueta": "Nro 6",
     "descripcion": "Chocker Nro 6",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0008.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "42",
@@ -417,7 +417,7 @@
     "etiqueta": "Nro 7",
     "descripcion": "Chocker Nro 7",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0009.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "43",
@@ -427,7 +427,7 @@
     "etiqueta": "Nro 8",
     "descripcion": "Chocker Nro 8",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0010.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "44",
@@ -437,7 +437,7 @@
     "etiqueta": "Nro 9",
     "descripcion": "Chocker Nro 9",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0011.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "45",
@@ -447,7 +447,7 @@
     "etiqueta": "Nro 10",
     "descripcion": "Chocker Nro 10",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0012.jpg",
-    "stock": 1
+    "stock": 100
   },
   {
     "id_producto": "46",
@@ -457,9 +457,9 @@
     "etiqueta": "Nro 11",
     "descripcion": "Chocker Nro 11",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0013.jpg",
-    "stock": 1
+    "stock": 100
   },
-  {
+ {
     "id_producto": "47",
     "titulo": "Chocker 12",
     "precio": 9000,
@@ -467,6 +467,46 @@
     "etiqueta": "Nro 12",
     "descripcion": "Chocker Nro 12",
     "imagen": "/uploads/imagenes/IMG-20260320-WA0014.jpg",
-    "stock": 1
+    "stock": 100
+  },
+{
+    "id_producto": "48",
+    "titulo": "Souvenirs x20u",
+    "precio": 40000,
+    "categoria": "Souvenirs",
+    "etiqueta": "x20u",
+    "descripcion": "x20u c/u 2.000",
+    "imagen": "/uploads/imagenes/t-p-1.jpg",
+    "stock": 100
+  },
+{
+    "id_producto": "49",
+    "titulo": "Souvenirs x30u",
+    "precio": 54000,
+    "categoria": "Souvenirs",
+    "etiqueta": "x30u",
+    "descripcion": "x30u c/u 1.800",
+    "imagen": "/uploads/imagenes/t-p-2.jpg",
+    "stock": 100
+  },
+{
+    "id_producto": "50",
+    "titulo": "Souvenirs x50u",
+    "precio": 75000,
+    "categoria": "Souvenirs",
+    "etiqueta": "x50u",
+    "descripcion": "x50u c/u 1.500",
+    "imagen": "/uploads/imagenes/t-p-3.jpg",
+    "stock": 100
+  },
+{
+    "id_producto": "51",
+    "titulo": "Souvenirs x100u",
+    "precio": 100000,
+    "categoria": "Souvenirs",
+    "etiqueta": "x100u",
+    "descripcion": "x100u c/u 1.000",
+    "imagen": "/uploads/imagenes/t-p-4.jpg",
+    "stock": 100
   }
 ]

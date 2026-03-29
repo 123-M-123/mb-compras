@@ -169,13 +169,13 @@ export default function Home() {
         <div
           className="header-inner"
           style={{
-          maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem',
-          height: 55, display: 'flex', alignItems: 'center',
+          maxWidth: 1200, margin: '0 auto', padding: '0 1.5rem 6px',
+          height: 65, display: 'flex', alignItems: 'flex-end',
           justifyContent: 'space-between', position: 'relative',
         }}>
 
           {/* REDES — izquierda */}
-          <div className="social-links" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div className="social-links" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '16px'}}>
             <a
               href="https://www.instagram.com/me_ra_k_i?igsh=Z2Yydnk1cmVraW1s"
               target="_blank"
@@ -233,7 +233,7 @@ export default function Home() {
               border: `1.5px solid ${C.gold}`, borderRadius: 8,
               padding: '0.4rem 0.9rem', color: C.gold, cursor: 'pointer',
               display: 'flex', alignItems: 'center', gap: '0.4rem',
-              fontSize: '0.85rem', fontWeight: 600,
+              fontSize: '0.85rem', fontWeight: 600, marginTop: '25px'
             }}
           >
             <IconCarrito size={18} />
@@ -283,15 +283,17 @@ export default function Home() {
         </div>
 
         <div style={{ position: 'relative', zIndex: 1 }}>
+<p suppressHydrationWarning style={{ color: C.goldLight, fontSize: '1.10rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 0.5rem', textShadow: '0 4px 14px rgba(0,0,0,0.31)' }}>
+            Producto 100% Artesanal
+          </p>
+
           <p suppressHydrationWarning style={{ color: C.goldLight, fontSize: '0.90rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 0.5rem', textShadow: '0 4px 14px rgba(0,0,0,0.31)' }}>
             cada diseño está tejido a mano con hilos de calidad.
           </p>
           <p suppressHydrationWarning style={{ color: C.goldLight, fontSize: '0.70rem', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '0 0 1rem', textShadow: '0 4px 14px rgba(0,0,0,0.31)' }}>
             pensado para que una pieza original, única y especial.
           </p>
-          <h2 style={{ color: C.white, fontSize: 'clamp(1.8rem, 5vw, 2.8rem)', fontWeight: 800, margin: '0 0 0.75rem' }}>
-            Producto 100% Artesanal
-          </h2>
+        
           <p style={{ color: C.tanLight, fontSize: '1rem', maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
             ¨Meraki¨ es una palabra griega que significa hacer algo con pasión, amor, creatividad y alma,
             dejando una huella personal y positiva en todo lo que se hace. Esto es lo que quiero trasmitir
@@ -303,18 +305,27 @@ export default function Home() {
             0% { transform: scale(0.74) translateY(0px); }
             100% { transform: scale(1.11) translateY(-10px); }
           }
+            @keyframes scrollX {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
           @keyframes heroLogoBreath {
             0% {
-              transform: scale(0.88);
+              transform: scale(0.82);
               filter:
-                drop-shadow(0 0 10px rgba(255, 250, 170, 0.78))
-                drop-shadow(0 0 24px rgba(255, 220, 90, 0.52));
+                drop-shadow(0 0 12px rgba(255, 250, 170, 0.9))
+                drop-shadow(0 0 30px rgba(255, 220, 90, 0.6));
             }
             100% {
-              transform: scale(0.98);
+              transform: scale(1.08);
               filter:
-                drop-shadow(0 0 14px rgba(255, 255, 210, 0.92))
-                drop-shadow(0 0 32px rgba(255, 230, 120, 0.60));
+                drop-shadow(0 0 18px rgba(255, 255, 210, 0.1))
+                drop-shadow(0 0 40px rgba(255, 230, 120, 0.75));
             }
           }
           @media (prefers-reduced-motion: reduce) {
@@ -382,17 +393,19 @@ export default function Home() {
 
         {/* Filtro categoría */}
         <div style={{ marginBottom: '1rem' }}>
-          <p style={{ fontSize: '1.5rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: C.dark, marginBottom: '0.6rem' }}>
+          <p style={{ fontSize: '1.0rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: C.dark, marginBottom: '0.6rem' }}>
             Categoría
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {categorias.map(cat => (
               <button key={cat} onClick={() => handleCategoriaChange(cat)} style={{
                 padding: '0.4rem 1.1rem', borderRadius: 20,
-                border: `1.5px solid ${categoriaActiva === cat ? C.olive : C.grayLight}`,
-                background: categoriaActiva === cat ? C.olive : C.white,
-                color: categoriaActiva === cat ? C.white : C.gray,
-                fontSize: '0.82rem', fontWeight: 600, cursor: 'pointer',
+                border: `1.5px solid ${C.purple}`,
+background: categoriaActiva === cat ? C.white : C.purple,
+color: categoriaActiva === cat ? C.purple : C.white,
+fontSize: '0.82rem', fontWeight: 700, cursor: 'pointer',
+textTransform: 'uppercase' as const,
+boxShadow: '0 3px 8px rgba(114,1,206,0.25)',
               }}>{cat}</button>
             ))}
           </div>
@@ -440,7 +453,7 @@ export default function Home() {
 
         {/* Contador */}
         {!cargando && !errorMsg && (
-          <p style={{ color: C.gray, fontSize: '0.82rem', marginBottom: '1.5rem' }}>
+          <p style={{ color: C.dark, fontSize: '0.88rem', fontWeight: 600, marginBottom: '1.5rem' }}>
             {productosFiltrados.length} producto{productosFiltrados.length !== 1 ? 's' : ''}
             {categoriaActiva !== 'Todos' && ` en ${categoriaActiva}`}
             {etiquetaActiva !== 'Todas' && ` · ${etiquetaActiva}`}
@@ -473,6 +486,39 @@ export default function Home() {
           </div>
         )}
       </main>
+
+{/* CARRUSELES */}
+<section style={{ padding: '2rem 0', background: C.offWhite }}>
+
+  <Carrusel titulo="como quedarian en vos" velocidad={75} imagenes={[
+    'modelo-1.jpg','modelo-2.jpg','modelo-3.jpg','modelo-4.jpg','modelo-5.jpg','modelo-6.jpg',
+    'modelo-7.jpg','modelo-8.jpg','modelo-9.jpg','modelo-10.jpg','modelo-11.jpg','modelo-12.jpg'
+  ]} />
+
+  <Carrusel titulo="Aros" velocidad={85} imagenes={[
+    'IMG-20260317-WA0011.jpg','IMG-20260317-WA0012.jpg','IMG-20260317-WA0013.jpg','IMG-20260317-WA0014.jpg',
+    'IMG-20260317-WA0015.jpg','IMG-20260317-WA0016.jpg','IMG-20260317-WA0017.jpg','IMG-20260317-WA0018.jpg',
+    'IMG-20260317-WA0019.jpg','IMG-20260317-WA0020.jpg','IMG-20260317-WA0021.jpg','IMG-20260317-WA0022.jpg',
+    'IMG-20260317-WA0023.jpg','IMG-20260317-WA0024.jpg','IMG-20260317-WA0025.jpg','IMG-20260317-WA0026.jpg',
+    'IMG-20260317-WA0027.jpg','IMG-20260317-WA0028.jpg','IMG-20260317-WA0029.jpg','IMG-20260317-WA0030.jpg',
+    'IMG-20260317-WA0031.jpg','IMG-20260317-WA0032.jpg','IMG-20260317-WA0033.jpg','IMG-20260317-WA0034.jpg',
+    'IMG-20260317-WA0035.jpg','IMG-20260317-WA0036.jpg','IMG-20260317-WA0037.jpg','IMG-20260317-WA0038.jpg',
+    'IMG-20260317-WA0039.jpg','IMG-20260317-WA0040.jpg','IMG-20260317-WA0041.jpg','IMG-20260317-WA0042.jpg',
+    'IMG-20260317-WA0043.jpg','IMG-20260317-WA0044.jpg','IMG-20260317-WA0045.jpg'
+  ]} />
+
+  <Carrusel titulo="Chokers" velocidad={50} imagenes={[
+    'IMG-20260320-WA0002.jpg','IMG-20260320-WA0003.jpg','IMG-20260320-WA0004.jpg','IMG-20260320-WA0005.jpg',
+    'IMG-20260320-WA0006.jpg','IMG-20260320-WA0008.jpg','IMG-20260320-WA0009.jpg','IMG-20260320-WA0010.jpg',
+    'IMG-20260320-WA0011.jpg','IMG-20260320-WA0012.jpg','IMG-20260320-WA0013.jpg','IMG-20260320-WA0014.jpg'
+  ]} />
+
+  <Carrusel titulo="Souvenirs" velocidad={60} imagenes={[
+    'souvenir-1.jpg','souvenir-2.jpg','souvenir-3.jpg','souvenir-4.jpg',
+    'souvenir-5.jpg','souvenir-6.jpg','souvenir-7.jpg','souvenir-8.jpg'
+  ]} />
+
+</section>
 
       {/* FOOTER */}
       <footer style={{ background: C.dark, color: C.tanLight, textAlign: 'center', padding: '2rem 1.5rem', marginTop: '3rem' }}>
@@ -658,7 +704,7 @@ function ProductCard({ producto, onVerImagen, onAgregar }: ProductCardProps) {
       style={{
         background: C.goldLight, borderRadius: 14, overflow: 'hidden',
         border: `5px solid ${hover ? C.purple : C.grayLight}`,
-        boxShadow: hover ? '0 8px 28px rgba(139,122,184,0.2)' : '0 2px 8px rgba(0,0,0,0.06)',
+        boxShadow: hover ? '0 10px 32px rgba(114,1,206,0.35)' : '0 4px 14px rgba(0,0,0,0.15)',
         transition: 'all 0.25s ease',
         transform: hover ? 'translateY(-3px)' : 'translateY(0)',
         display: 'flex', flexDirection: 'column',
@@ -703,6 +749,64 @@ function ProductCard({ producto, onVerImagen, onAgregar }: ProductCardProps) {
           }}>
             <IconCarrito size={14} /><span>Agregar</span>
           </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+type CarruselProps = {
+  titulo: string
+  imagenes: string[]
+  velocidad?: number
+}
+
+function Carrusel({ titulo, imagenes, velocidad = 20 }: CarruselProps) {
+  const imgs = [...imagenes, ...imagenes]
+
+  return (
+    <div style={{ marginBottom: '2.5rem' }}>
+      <h3 style={{
+        textAlign: 'center',
+        marginBottom: '1rem',
+        color: C.dark,
+        fontSize: '1.2rem',
+        letterSpacing: '0.12em',
+        textTransform: 'uppercase'
+      }}>
+        {titulo}
+      </h3>
+
+      <div style={{
+        overflow: 'hidden',
+        position: 'relative'
+      }}>
+        <div style={{
+          display: 'flex',
+          width: 'max-content',
+          animation: `scrollX ${velocidad}s linear infinite`
+        }}>
+          {imgs.map((img, i) => (
+            <div key={i} style={{
+              width: 350,
+              height: 350,
+              marginRight: '1rem',
+              borderRadius: 12,
+              overflow: 'hidden',
+              flexShrink: 0,
+              background: C.grayLight
+            }}>
+              <img
+                src={`/uploads/imagenes/${img}`}
+                alt=""
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
