@@ -31,7 +31,8 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <>
-      <div className="border rounded-lg p-4 shadow-md">
+    
+      <div className="product-card border rounded-lg p-4 shadow-md">
         {product.imagen && (
           <img
             src={product.imagen}
