@@ -35,7 +35,7 @@ export default function Header() {
     const saved = localStorage.getItem('meraki:dark')
     const isDark = saved === '1' || (saved === null && window.matchMedia('(prefers-color-scheme: dark)').matches)
     setDarkMode(isDark)
-    document.documentElement.classList.toggle('dark', isDark)
+  
   }, [])
 
   function toggleDark() {
@@ -54,8 +54,8 @@ export default function Header() {
    
   }
 
-  return (
-    <header>
+return (
+  <header>
       <div className="header-inner">
         {/* Redes */}
         <div className="social-links">
@@ -94,7 +94,7 @@ export default function Header() {
         <button className="cart-btn" onClick={() => setCarritoOpen(true)}>
           <IconCarrito size={18} />
           {cantidadCarrito > 0 && <span className="cart-badge">{cantidadCarrito}</span>}
-          {cantidadCarrito > 0 && <span style={{ color: C.purpleLight, fontSize: '0.75rem', marginLeft: 6 }}>{formatARS(totalCarrito)}</span>}
+         
         </button>
       </div>
 

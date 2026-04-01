@@ -73,10 +73,16 @@ export default function CarritoPanel() {
       position: 'fixed', inset: 0, background: 'rgba(20,18,14,0.5)', zIndex: 80,
     }}>
       <div onClick={e => e.stopPropagation()} style={{
-        position: 'absolute', top: 0, right: 0, height: '100%',
-        width: 'min(400px, 100vw)', background: C.white,
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        height: '100%',
+        width: 'min(400px, 100vw)',
+        background: C.white,
         boxShadow: '-4px 0 30px rgba(0,0,0,0.2)',
-        display: 'flex', flexDirection: 'column',
+        display: 'flex',
+        flexDirection: 'column',
+        zIndex: 9999,
       }}>
         {/* Header */}
         <div style={{
@@ -151,6 +157,7 @@ export default function CarritoPanel() {
               <IconCarrito size={18} />
               {procesando ? 'Redirigiendo…' : 'Pagar con Mercado Pago'}
             </button>
+          
             <button onClick={vaciarCarrito} style={{
               width: '100%', marginTop: '0.5rem', padding: '0.5rem',
               background: 'transparent', border: 'none', color: C.gray,

@@ -47,7 +47,7 @@ export default function GaleriaSection() {
     <section id="galeria" style={{ padding: '2rem 0', background: C.offWhite }}>
       <Carrusel titulo="Como quedarían en vos" imagenes={modelos}   duracion={75} />
       <Carrusel titulo="Aros"                   imagenes={aros}      duracion={85} />
-      <Carrusel titulo="Chokers"                imagenes={chokers}   duracion={50} />
+      <Carrusel titulo="Chockers"                imagenes={chokers}   duracion={50} />
       <Carrusel titulo="Souvenirs"              imagenes={souvenirs} duracion={60} />
     </section>
   )
