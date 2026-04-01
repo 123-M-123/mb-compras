@@ -84,8 +84,7 @@ return (
             style={{
               objectFit: 'contain',
               display: 'block',
-              filter: 'drop-shadow(0 0 4px rgba(255, 250, 170, 0.55)) drop-shadow(0 0 10px rgba(255, 220, 90, 0.35))',
-              animation: 'heroLogoBreath 10s ease-in-out infinite alternate',
+        
             }}
           />
         </div>

@@ -1,11 +1,11 @@
 'use client'
-
+import { createPortal } from 'react-dom'
 import { useState } from 'react'
 import Image from 'next/image'
 import { useCarrito } from '../context/CarritoContext'
 
 const C = {
-  purple:    '#7201ce',
+  purple:    '#420079',
   dark:      '#2C2A24',
   gray:      '#6B6861',
   grayLight: '#EDE8DF',
@@ -68,10 +68,10 @@ export default function CarritoPanel() {
 
   if (!carritoOpen) return null
 
-  return (
-    <div onClick={() => setCarritoOpen(false)} style={{
-      position: 'fixed', inset: 0, background: 'rgba(20,18,14,0.5)', zIndex: 80,
-    }}>
+  return createPortal(
+  <div onClick={() => setCarritoOpen(false)} style={{
+    position: 'fixed', inset: 0, background: 'rgba(20,18,14,0.5)', zIndex: 9999,
+  }}>
       <div onClick={e => e.stopPropagation()} style={{
         position: 'absolute',
         top: 0,
@@ -166,6 +166,7 @@ export default function CarritoPanel() {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
