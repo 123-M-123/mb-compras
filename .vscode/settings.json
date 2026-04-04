@@ -1,0 +1,10 @@
+{
+  "workbench.colorTheme": "Red",
+  "workbench.iconTheme": "vs-minimal",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#550423",
+    "sideBar.background": "#550423",
+    "titleBar.activeBackground": "#550423"
+  },
+  "window.title": "MB-COMPRAS"
+}

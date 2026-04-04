@@ -3,16 +3,7 @@ import { createPortal } from 'react-dom'
 import { useState } from 'react'
 import Image from 'next/image'
 import { useCarrito } from '../context/CarritoContext'
-
-const C = {
-  purple:    '#420079',
-  dark:      '#2C2A24',
-  gray:      '#6B6861',
-  grayLight: '#EDE8DF',
-  tanPale:   '#F7F0E6',
-  olive:     '#7b833a',
-  white:     '#FFFFFF',
-} as const
+import { C } from '@/styles/colores'
 
 const formatARS = (n: number) =>
   n.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })
@@ -28,8 +19,8 @@ const IconCarrito = ({ size = 18 }: { size?: number }) => (
 const btnQtyStyle: React.CSSProperties = {
   width: 26, height: 26,
   display: 'flex', alignItems: 'center', justifyContent: 'center',
-  background: '#fffeec', border: '1px solid #D6D0C4', borderRadius: 6,
-  cursor: 'pointer', fontSize: '0.9rem', fontWeight: 700, color: '#555', padding: 0,
+  background: C.crema, border: `1px solid ${C.gris}`, borderRadius: 6,
+  cursor: 'pointer', fontSize: '0.9rem', fontWeight: 700, color: C.vino, padding: 0,
 }
 
 export default function CarritoPanel() {
@@ -69,28 +60,25 @@ export default function CarritoPanel() {
   if (!carritoOpen) return null
 
   return createPortal(
-  <div onClick={() => setCarritoOpen(false)} style={{
-    position: 'fixed', inset: 0, background: 'rgba(20,18,14,0.5)', zIndex: 9999,
-  }}>
+    <div onClick={() => setCarritoOpen(false)} style={{
+      position: 'fixed', inset: 0, background: 'rgba(20,18,14,0.5)', zIndex: 9999,
+    }}>
       <div onClick={e => e.stopPropagation()} style={{
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        height: '100%',
-        width: 'min(400px, 100vw)',
-        background: C.white,
+        position: 'absolute', top: 0, right: 0,
+        height: '100%', width: 'min(400px, 100vw)',
+        background: C.fondo,
         boxShadow: '-4px 0 30px rgba(0,0,0,0.2)',
-        display: 'flex',
-        flexDirection: 'column',
-        zIndex: 9999,
+        display: 'flex', flexDirection: 'column', zIndex: 9999,
       }}>
-        {/* Header */}
+
+        {/* Header carrito */}
         <div style={{
-          padding: '1.25rem 1.5rem', borderBottom: `1px solid ${C.grayLight}`,
+          padding: '1.25rem 1.5rem', borderBottom: `1px solid ${C.gris}`,
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          background: C.purple,
+          background: C.vino,
         }}>
-          <h3 style={{ margin: 0, color: C.white, fontSize: '1.1rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <h3 style={{ margin: 0, color: C.white, fontSize: '1.1rem', fontWeight: 700,
+            display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <IconCarrito size={18} /> Carrito ({cantidadCarrito})
           </h3>
           <button onClick={() => setCarritoOpen(false)} style={{
@@ -99,10 +87,21 @@ export default function CarritoPanel() {
           }}>✕</button>
         </div>
 
+        {/* Aviso stock */}
+        <div style={{
+          background: C.naranja, padding: '0.6rem 1.25rem',
+          display: 'flex', alignItems: 'center', gap: '0.5rem',
+        }}>
+          <span style={{ fontSize: '1rem' }}>⚠️</span>
+          <p style={{ margin: 0, fontSize: '0.75rem', fontWeight: 700, color: C.white, lineHeight: 1.3 }}>
+            ANTES DE PAGAR CONSULTÁ EL STOCK POR WHATSAPP
+          </p>
+        </div>
+
         {/* Items */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '1rem 1.5rem' }}>
           {carrito.length === 0 ? (
-            <div style={{ textAlign: 'center', paddingTop: '3rem', color: C.gray }}>
+            <div style={{ textAlign: 'center', paddingTop: '3rem', color: C.grisOscuro }}>
               <IconCarrito size={40} />
               <p>Tu carrito está vacío</p>
             </div>
@@ -110,19 +109,20 @@ export default function CarritoPanel() {
             carrito.map(item => (
               <div key={item.id_producto} style={{
                 display: 'flex', gap: '0.75rem', padding: '0.75rem 0',
-                borderBottom: `1px solid ${C.grayLight}`, alignItems: 'center',
+                borderBottom: `1px solid ${C.gris}`, alignItems: 'center',
               }}>
                 <div style={{
                   position: 'relative', width: 60, height: 60,
-                  borderRadius: 8, overflow: 'hidden', flexShrink: 0, background: C.grayLight,
+                  borderRadius: 8, overflow: 'hidden', flexShrink: 0, background: C.gris,
                 }}>
                   <Image src={item.imagen} alt={item.titulo} fill sizes="60px" style={{ objectFit: 'cover' }} />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{ margin: '0 0 0.2rem', fontSize: '0.82rem', fontWeight: 600, color: C.dark, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <p style={{ margin: '0 0 0.2rem', fontSize: '0.82rem', fontWeight: 600,
+                    color: C.vino, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {item.titulo}
                   </p>
-                  <p style={{ margin: 0, fontSize: '0.78rem', color: C.purple, fontWeight: 700 }}>
+                  <p style={{ margin: 0, fontSize: '0.78rem', color: C.naranja, fontWeight: 700 }}>
                     {formatARS(item.precio)}
                   </p>
                 </div>
@@ -140,16 +140,16 @@ export default function CarritoPanel() {
           )}
         </div>
 
-        {/* Footer */}
+        {/* Footer carrito */}
         {carrito.length > 0 && (
-          <div style={{ padding: '1.25rem 1.5rem', borderTop: `1px solid ${C.grayLight}`, background: C.tanPale }}>
+          <div style={{ padding: '1.25rem 1.5rem', borderTop: `1px solid ${C.gris}`, background: C.crema }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-              <span style={{ fontWeight: 700, color: C.dark }}>Total</span>
-              <span style={{ fontSize: '1.2rem', fontWeight: 800, color: C.purple }}>{formatARS(totalCarrito)}</span>
+              <span style={{ fontWeight: 700, color: C.vino }}>Total</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: 800, color: C.naranja }}>{formatARS(totalCarrito)}</span>
             </div>
             <button onClick={handleComprar} disabled={procesando} style={{
               width: '100%', padding: '0.9rem',
-              background: procesando ? C.gray : C.purple,
+              background: procesando ? C.grisOscuro : C.vino,
               border: 'none', borderRadius: 10, color: C.white,
               fontWeight: 800, fontSize: '1rem', cursor: procesando ? 'not-allowed' : 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
@@ -157,10 +157,9 @@ export default function CarritoPanel() {
               <IconCarrito size={18} />
               {procesando ? 'Redirigiendo…' : 'Pagar con Mercado Pago'}
             </button>
-          
             <button onClick={vaciarCarrito} style={{
               width: '100%', marginTop: '0.5rem', padding: '0.5rem',
-              background: 'transparent', border: 'none', color: C.gray,
+              background: 'transparent', border: 'none', color: C.grisOscuro,
               fontSize: '0.78rem', cursor: 'pointer', textDecoration: 'underline',
             }}>Vaciar carrito</button>
           </div>

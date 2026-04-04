@@ -61,7 +61,7 @@ export default function ProductosSection() {
               titulo={seccion.nombre}
               productos={seccion.productos}
               onVerProducto={(producto, indice, lista) => {
-               setModal(producto)
+               setModal({ ...producto, _lista: lista, _indice: indice })
               }}
             />
           </div>

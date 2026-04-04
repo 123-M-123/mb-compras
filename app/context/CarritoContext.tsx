@@ -11,6 +11,9 @@ export type Producto = {
   descripcion: string
   imagen: string
   stock: number
+ // Navegación del modal
+  _lista?: Producto[]
+  _indice?: number
 }
 
 export type ItemCarrito = Producto & { cantidad: number }
@@ -62,7 +65,7 @@ export function CarritoProvider({ children }: { children: ReactNode }) {
 
   const mostrarNotif = (msg: string) => {
     setNotif(msg)
-    setTimeout(() => setNotif(''), 2500)
+    setTimeout(() => setNotif(''), 9000)
   }
 
   return (

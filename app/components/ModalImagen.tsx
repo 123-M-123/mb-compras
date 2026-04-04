@@ -2,15 +2,7 @@
 
 import Image from 'next/image'
 import { useCarrito } from '../context/CarritoContext'
-
-const C = {
-  olive:     '#7b833a',
-  purple:    '#7201ce',
-  dark:      '#2C2A24',
-  gray:      '#6B6861',
-  grayLight: '#EDE8DF',
-  white:     '#FFFFFF',
-} as const
+import { C } from '@/styles/colores'
 
 const formatARS = (n: number) =>
   n.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })
@@ -27,6 +19,15 @@ export default function ModalImagen() {
   const { modal, setModal, agregarAlCarrito } = useCarrito()
   if (!modal) return null
 
+  const lista = modal._lista || []
+  const indice = modal._indice ?? -1
+  const tieneFlechas = lista.length > 1 && indice >= 0
+
+  const ir = (nuevoIndice: number) => {
+    if (nuevoIndice < 0 || nuevoIndice >= lista.length) return
+    setModal({ ...lista[nuevoIndice], _lista: lista, _indice: nuevoIndice })
+  }
+
   return (
     <div onClick={() => setModal(null)} style={{
       position: 'fixed', inset: 0, background: 'rgba(20,18,14,0.88)',
@@ -35,32 +36,93 @@ export default function ModalImagen() {
       <div onClick={e => e.stopPropagation()} style={{
         background: C.white, borderRadius: 16, overflow: 'hidden',
         maxWidth: 480, width: '100%', boxShadow: '0 24px 60px rgba(0,0,0,0.4)',
+        position: 'relative',
       }}>
+
+        {/* Flechas navegación */}
+        {tieneFlechas && (
+          <>
+            <button onClick={() => ir(indice - 1)} disabled={indice === 0} style={{
+              position: 'absolute', left: 8, top: '50%',
+              zIndex: 10, background: indice === 0 ? 'rgba(0,0,0,0.2)' : C.vino,
+              border: 'none', borderRadius: '50%', width: 48, height: 48,
+              color: C.white, fontSize: '2.8rem', cursor: indice === 0 ? 'default' : 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700,
+            }}>‹</button>
+            <button onClick={() => ir(indice + 1)} disabled={indice === lista.length - 1} style={{
+              position: 'absolute', right: 8, top: '50%',
+              zIndex: 10, background: indice === lista.length - 1 ? 'rgba(0,0,0,0.2)' : C.vino,
+              border: 'none', borderRadius: '50%', width: 48, height: 48,
+              color: C.white, fontSize: '2.8rem', cursor: indice === lista.length - 1 ? 'default' : 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700,
+            }}>›</button>
+          </>
+        )}
+
+        {/* Imagen */}
         <div style={{ position: 'relative', aspectRatio: '1', width: '100%' }}>
-          <Image src={modal.imagen} alt={modal.titulo} fill sizes="480px" style={{ objectFit: 'cover' }} />
+          <Image src={modal.imagen} alt={modal.titulo} fill sizes="480px"
+            style={{ objectFit: 'cover' }} />
           <button onClick={() => setModal(null)} style={{
             position: 'absolute', top: 10, right: 10,
             background: 'rgba(0,0,0,0.5)', border: 'none', borderRadius: '50%',
-            width: 32, height: 32, color: '#fff', fontSize: '1rem',
+            width: 32, height: 32, color: C.white, fontSize: '1rem',
             cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>✕</button>
+
+          {/* Contador */}
+          {tieneFlechas && (
+            <span style={{
+              position: 'absolute', bottom: 8, right: 8,
+              background: 'rgba(0,0,0,0.5)', color: C.white,
+              fontSize: '0.7rem', padding: '0.2rem 0.5rem', borderRadius: 10,
+            }}>
+              {indice + 1} / {lista.length}
+            </span>
+          )}
         </div>
+
+        {/* Info */}
         <div style={{ padding: '1.25rem 1.5rem' }}>
-          <h3 style={{ margin: '0 0 0.3rem', fontSize: '1.1rem', fontWeight: 700, color: C.dark }}>{modal.titulo}</h3>
-          <p style={{ margin: '0 0 0.4rem', color: C.gray, fontSize: '0.85rem' }}>{modal.descripcion}</p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '1rem' }}>
-            <span style={{ fontSize: '1.3rem', fontWeight: 800, color: C.olive }}>{formatARS(modal.precio)}</span>
+          <h3 style={{ margin: '0 0 0.3rem', fontSize: '1.1rem', fontWeight: 700, color: C.vino }}>
+            {modal.titulo}
+          </h3>
+          <p style={{ margin: '0 0 0.4rem', color: C.grisOscuro, fontSize: '0.85rem' }}>
+            {modal.descripcion}
+          </p>
+
+          {/* Stock */}
+          <span style={{
+            display: 'inline-block', marginBottom: '0.75rem',
+            background: modal.stock === 0 ? '#cc0000' : '#2d9c4a',
+            color: C.white, fontSize: '0.72rem', fontWeight: 700,
+            padding: '0.2rem 0.6rem', borderRadius: 8,
+          }}>
+            {modal.stock === 0 ? '❌ Sin stock' : '✅ Disponible'}
+          </span>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem' }}>
+            <span style={{ fontSize: '1.3rem', fontWeight: 800, color: C.naranja }}>
+              {formatARS(modal.precio)}
+            </span>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               <button onClick={() => setModal(null)} style={{
-                padding: '0.5rem 1rem', border: `1px solid ${C.grayLight}`,
-                borderRadius: 8, background: C.white, color: C.gray, cursor: 'pointer', fontSize: '0.85rem',
+                padding: '0.5rem 1rem', border: `1px solid ${C.gris}`,
+                borderRadius: 8, background: C.white, color: C.grisOscuro,
+                cursor: 'pointer', fontSize: '0.85rem',
               }}>Cerrar</button>
-              <button onClick={() => { agregarAlCarrito(modal); setModal(null) }} style={{
-                padding: '0.5rem 1.25rem', border: 'none', borderRadius: 8,
-                background: C.purple, color: C.white, cursor: 'pointer', fontSize: '0.85rem', fontWeight: 700,
-              }}>
+              <button
+                onClick={() => { agregarAlCarrito(modal); setModal(null) }}
+                disabled={modal.stock === 0}
+                style={{
+                  padding: '0.5rem 1.25rem', border: 'none', borderRadius: 8,
+                  background: modal.stock === 0 ? C.gris : C.naranja,
+                  color: C.white, cursor: modal.stock === 0 ? 'default' : 'pointer',
+                  fontSize: '0.85rem', fontWeight: 700,
+                }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <IconCarrito size={15} /> Agregar
+                  <IconCarrito size={15} />
+                  {modal.stock === 0 ? 'Sin stock' : 'Agregar'}
                 </span>
               </button>
             </div>

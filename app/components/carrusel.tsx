@@ -52,7 +52,7 @@ export default function Carrusel({ titulo, productos, onVerProducto }: Props) {
             key={p.id_producto}
             onClick={() => onVerProducto(p, i, productos)}
             style={{
-              flexShrink: 0, width: 160, scrollSnapAlign: 'start',
+              flexShrink: 0, width: 200, scrollSnapAlign: 'start',
               cursor: 'pointer', borderRadius: 12, overflow: 'hidden',
               border: `1.5px solid ${C.crema}`,
               background: C.white,
@@ -76,19 +76,28 @@ export default function Carrusel({ titulo, productos, onVerProducto }: Props) {
                 style={{ objectFit: 'cover' }}
                 loading="lazy"
               />
-              {p.etiqueta && (
-                <span style={{
-                  position: 'absolute', top: 6, left: 6,
-                  background: C.naranja, color: C.white,
-                  fontSize: '0.6rem', fontWeight: 700,
-                  padding: '0.15rem 0.45rem', borderRadius: 10,
-                  letterSpacing: '0.04em',
-                }}>
-                  {p.etiqueta}
-                </span>
-              )}
-            </div>
+               {/* Overlay oscuro solo sin stock */}
+  {p.stock === 0 && (
+    <div style={{
+      position: 'absolute', inset: 0,
+      background: 'rgba(0,0,0,0.45)',
+    }} />
+  )}
 
+  {/* UNA SOLA etiqueta arriba izquierda */}
+  <span style={{
+    position: 'absolute', top: 8, left: 8,
+    background: p.stock === 0 ? '#cc0000' : C.naranja,
+    color: 'white',
+    fontSize: '0.65rem', fontWeight: 700,
+    padding: '0.2rem 0.55rem',
+    borderRadius: 10, letterSpacing: '0.06em',
+    zIndex: 2,
+  }}>
+    {p.stock === 0 ? 'SIN STOCK' : 'Disponible'}
+  </span>
+
+</div>
             {/* Info */}
             <div style={{ padding: '0.6rem 0.75rem' }}>
               <p style={{ margin: '0 0 0.3rem', fontSize: '0.78rem', fontWeight: 600, color: C.vino, lineHeight: 1.3,
