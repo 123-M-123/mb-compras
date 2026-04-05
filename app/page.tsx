@@ -63,13 +63,17 @@ function Footer() {
       <p style={{ margin: '0.5rem 0', fontSize: '0.8rem' }}>
         
       </p>
-      <p style={{ margin: '1rem 0 0', fontSize: '0.72rem', opacity: 0.5 }}>
-        © {new Date().getFullYear()} Todos los derechos reservados —{' '}
-        <span style={{ color: C.gris }}>Diseño web: Marcos Marti</span>
+      <p style={{ margin: '1.2rem 0 0', fontSize: '0.85rem', opacity: 0.5 }}>
+        © {new Date().getFullYear()} Todos los derechos reservados {' '}
+        <span style={{ color: C.naranjaPale }}>
+          <br />
+          Diseño web: Marcos Marti
+        </span>
       </p>
       <a href="mailto:marcosmarti1980@gmail.com"
-          style={{ color: C.naranjaPale, textDecoration: 'none', fontWeight: 600 }}>
-          ✉️solicita presupuesto✉️ a este Mail
+          style={{ color: C.gris, textDecoration: 'none', fontSize: '0.70rem', fontWeight: 400 }}>
+           Si queres una web como esta <br />
+           sos emprendedor ✉️ contactame
         </a>
     </footer>
   )
