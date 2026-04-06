@@ -6,6 +6,7 @@ import HeroSection from '@/app/components/HeroSection'
 import ProductosSection from '@/app/components/ProductosSection'
 import CarritoPanel from '@/app/components/CarritoPanel'
 import ModalImagen from '@/app/components/ModalImagen'
+import EnviosSection from '@/app/components/EnviosSection'
 
 function Toast() {
   const { notif } = useCarrito()
@@ -85,10 +86,12 @@ function AppContent() {
       <Header />
       <HeroSection />
       <ProductosSection />
+      <EnviosSection />
       <Footer />
       <CarritoPanel />
       <ModalImagen />
       <Toast />
+
     </div>
   )
 }
