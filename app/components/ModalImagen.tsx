@@ -43,17 +43,17 @@ export default function ModalImagen() {
         {tieneFlechas && (
           <>
             <button onClick={() => ir(indice - 1)} disabled={indice === 0} style={{
-              position: 'absolute', left: 8, top: '50%',
+              position: 'absolute', left: 8, top: '35%',
               zIndex: 10, background: indice === 0 ? 'rgba(0,0,0,0.2)' : C.vino,
               border: 'none', borderRadius: '50%', width: 48, height: 48,
-              color: C.white, fontSize: '2.8rem', cursor: indice === 0 ? 'default' : 'pointer',
+              color: C.white, fontSize: '2.6rem', lineHeight: '1',paddingBottom: '10px',cursor: indice === lista.length - 1 ? 'default' : 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700,
             }}>‹</button>
             <button onClick={() => ir(indice + 1)} disabled={indice === lista.length - 1} style={{
-              position: 'absolute', right: 8, top: '50%',
+              position: 'absolute', right: 8, top: '35%',
               zIndex: 10, background: indice === lista.length - 1 ? 'rgba(0,0,0,0.2)' : C.vino,
               border: 'none', borderRadius: '50%', width: 48, height: 48,
-              color: C.white, fontSize: '2.8rem', cursor: indice === lista.length - 1 ? 'default' : 'pointer',
+              color: C.white, fontSize: '2.6rem', lineHeight: '1',paddingBottom: '10px',cursor: indice === lista.length - 1 ? 'default' : 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700,
             }}>›</button>
           </>
@@ -87,12 +87,10 @@ export default function ModalImagen() {
           <h3 style={{ margin: '0 0 0.3rem', fontSize: '1.1rem', fontWeight: 700, color: C.vino }}>
             {modal.titulo}
           </h3>
-          <p style={{ margin: '0 0 0.4rem', color: C.grisOscuro, fontSize: '0.85rem' }}>
-            {modal.descripcion}
-          </p>
+      
 
           {/* Stock */}
-          <span style={{
+          <span translate="no" style={{
             display: 'inline-block', marginBottom: '0.75rem',
             background: modal.stock === 0 ? '#cc0000' : '#2d9c4a',
             color: C.white, fontSize: '0.72rem', fontWeight: 700,

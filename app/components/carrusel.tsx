@@ -85,7 +85,7 @@ export default function Carrusel({ titulo, productos, onVerProducto }: Props) {
   )}
 
   {/* UNA SOLA etiqueta arriba izquierda */}
-  <span style={{
+  <span translate="no" style={{
     position: 'absolute', top: 8, left: 8,
     background: p.stock === 0 ? '#cc0000' : C.naranja,
     color: 'white',
@@ -118,8 +118,9 @@ export default function Carrusel({ titulo, productos, onVerProducto }: Props) {
 const btnStyle: React.CSSProperties = {
   width: 28, height: 28, borderRadius: '50%',
   border: `1.5px solid ${C.naranjaPale}`,
-  background: C.white, color: C.naranja,
-  fontSize: '1.1rem', cursor: 'pointer',
+  background: C.naranja, color: C.white,
+  fontSize: '1.8rem', cursor: 'pointer',
   display: 'flex', alignItems: 'center', justifyContent: 'center',
   fontWeight: 700, lineHeight: 1,
+  paddingBottom: '5px',
 }

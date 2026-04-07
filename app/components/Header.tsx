@@ -244,40 +244,50 @@ export default function Header() {
       </div>
 
       {/* FILA 3 — Navegación */}
-      <nav style={{
-        borderTop: `1px solid rgba(255,255,255,0.1)`,
-        padding: '0 1.25rem', maxWidth: 1200, margin: '0 auto',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.3rem 0' }}>
-          <button onClick={() => setMenuOpen(!menuOpen)} style={{
-            background: 'transparent', border: 'none', color: C.vino,
-            cursor: 'pointer', fontSize: '1.2rem', padding: '0.25rem 0.5rem',
-          }} aria-expanded={menuOpen}>☰</button>
+<nav style={{
+  borderTop: `1px solid rgba(255,255,255,0.1)`,
+  padding: '0 1.25rem', maxWidth: 1200, margin: '0 auto',
+}}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.3rem 0' }}>
+    
+    {/* Hamburguesa */}
+    <button onClick={() => setMenuOpen(!menuOpen)} style={{
+      background: 'transparent', border: 'none', color: C.vino,
+      cursor: 'pointer', fontSize: '1.2rem', padding: '0.25rem 0.5rem',
+    }} aria-expanded={menuOpen}>
+      {menuOpen ? '✕' : '☰'}
+    </button>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
-            {NAV_LINKS.map(link => (
-              <a key={link.id} href={`#${link.id}`}
-                onClick={(e) => handleNavClick(e, link.id)}
-                style={{
-                  color: C.vino, textDecoration: 'none',
-                  fontSize: '0.8rem', fontWeight: 600,
-                  padding: '0.25rem 0.6rem', borderRadius: 12,
-                  transition: 'all 0.2s', letterSpacing: '0.04em',
-                  textTransform: 'uppercase',
-                }}
-                onMouseEnter={e => {
-                  (e.target as HTMLElement).style.background = C.naranja
-                  ;(e.target as HTMLElement).style.color = C.white
-                }}
-                onMouseLeave={e => {
-                  (e.target as HTMLElement).style.background = 'transparent'
-                  ;(e.target as HTMLElement).style.color = C.vino
-                }}
-              >{link.label}</a>
-            ))}
-          </div>
-        </div>
-      </nav>
+    {/* Links — solo visibles si menuOpen */}
+    {menuOpen && (
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
+        {NAV_LINKS.map(link => (
+          <a key={link.id} href={`#${link.id}`}
+            onClick={(e) => {
+              handleNavClick(e, link.id)
+            
+            }}
+            style={{
+              color: C.vino, textDecoration: 'none',
+              fontSize: '0.8rem', fontWeight: 600,
+              padding: '0.25rem 0.6rem', borderRadius: 12,
+              transition: 'all 0.2s', letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+            }}
+            onMouseEnter={e => {
+              (e.target as HTMLElement).style.background = C.naranja
+              ;(e.target as HTMLElement).style.color = C.white
+            }}
+            onMouseLeave={e => {
+              (e.target as HTMLElement).style.background = 'transparent'
+              ;(e.target as HTMLElement).style.color = C.vino
+            }}
+          >{link.label}</a>
+        ))}
+      </div>
+    )}
+  </div>
+</nav>
     </header>
   )
 }
