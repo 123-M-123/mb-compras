@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "compras online argentina",
   ],
 
-  // 🔵 OPEN GRAPH (WhatsApp / Facebook)
+  // 🔵 OPEN GRAPH  (WhatsApp / Facebook)
   openGraph: {
     title: "MB Compras — Bazar & Regalos",
     description:
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "MB Compras",
     images: [
       {
-        url: "/preview.jpg",
+        url: "/preview-v1.jpg",
         width: 1200,
         height: 630,
         alt: "MB Compras",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "MB Compras — Bazar & Regalos",
     description:
       "Bazar y regalos con envío a domicilio en CABA.",
-    images: ["/preview.jpg"],
+    images: ["/preview-v1.jpg"],
   },
 
   icons: {
