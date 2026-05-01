@@ -30,31 +30,20 @@ export default function CarritoPanel() {
   const totalCarrito    = carrito.reduce((s, i) => s + i.precio * i.cantidad, 0)
   const cantidadCarrito = carrito.reduce((s, i) => s + i.cantidad, 0)
 
-  const handleComprar = async () => {
+  // NUEVA LÓGICA: Redirige al checkout local con parámetros
+  const handleComprar = () => {
     if (carrito.length === 0) return
     setProcesando(true)
-    try {
-      const res = await fetch('/api/create-preference', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items: carrito.map(i => ({
-            id: i.id_producto, title: i.titulo,
-            quantity: i.cantidad, unit_price: i.precio,
-          })),
-        }),
-      })
-      const data: { init_point?: string; error?: string } = await res.json()
-      if (data.init_point) {
-        window.location.href = data.init_point
-      } else {
-        mostrarNotif('Error al iniciar el pago. Intenta de nuevo.')
-      }
-    } catch {
-      mostrarNotif('Error de conexión. Intenta de nuevo.')
-    } finally {
-      setProcesando(false)
-    }
+
+    const total = totalCarrito
+    const tituloResumen = carrito.length === 1 
+      ? carrito[0].titulo 
+      : `${carrito.length} productos del pedido`
+    
+    const descripcion = carrito.map(i => i.titulo).join(', ')
+
+    // Redirección a la página de checkout interna de la web
+    window.location.href = `/checkout?titulo=${encodeURIComponent(tituloResumen)}&precio=${total}&descripcion=${encodeURIComponent(descripcion)}`
   }
 
   if (!carritoOpen) return null
@@ -87,7 +76,7 @@ export default function CarritoPanel() {
           }}>✕</button>
         </div>
 
-        {/* Aviso stock */}
+        {/* Aviso stock (Se mantiene igual) */}
         <div style={{
           background: C.naranja, padding: '0.6rem 1.25rem',
           display: 'flex', alignItems: 'center', gap: '0.5rem',
@@ -155,7 +144,7 @@ export default function CarritoPanel() {
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
             }}>
               <IconCarrito size={18} />
-              {procesando ? 'Redirigiendo…' : 'Pagar con Mercado Pago'}
+              {procesando ? 'Cargando...' : 'Finalizar Compra'}
             </button>
             <button onClick={vaciarCarrito} style={{
               width: '100%', marginTop: '0.5rem', padding: '0.5rem',
